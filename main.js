@@ -13,7 +13,7 @@
 
 /*
  * @class: 根据传递参数，创建一个2048游戏
- * param{string} main： 存放2048游戏的位置的id 
+ * param{string} main： 存放2048游戏的位置的id
  * param{string} button: 点击开始游戏的按钮的id
  * param{string} score： 存放分数的位置的id
  */
@@ -128,7 +128,7 @@ Creat2048.prototype =  {
 				x = parseInt(Math.floor(Math.random() * 4));
 				y = parseInt(Math.floor(Math.random() * 4));
 				times ++;
-			
+
 		}
 
 		if(times == 50) {
@@ -147,7 +147,7 @@ Creat2048.prototype =  {
 		this.arr[x][y] = num;
 
 		animation.showNumberWithAnimation(x, y, num);
-		
+
 	},
 	//左移动
 	moveLeft: function() {
@@ -198,7 +198,7 @@ Creat2048.prototype =  {
 	//右移动
 	moveRight: function() {
 		var self = this;
-		if(!judeBox.canMoveRight(this.arr)) {		
+		if(!judeBox.canMoveRight(this.arr)) {
 			return false
 		}
 
@@ -245,11 +245,11 @@ Creat2048.prototype =  {
 	//向上移动
 	moveUp: function() {
 		var self = this;
-		if(!judeBox.canMoveUp(this.arr)) {		
+		if(!judeBox.canMoveUp(this.arr)) {
 			return false
 		}
 
-		
+
 		for(let j = 0; j < 4; j ++) {
 			for(let i = 1; i < 4; i ++ ) {
 				//判断是否能够
@@ -292,11 +292,11 @@ Creat2048.prototype =  {
 	//向下移动
 	moveDown: function() {
 		var self = this;
-		if(!judeBox.canMoveDown(this.arr)) {		
+		if(!judeBox.canMoveDown(this.arr)) {
 			return false
 		}
 
-		
+
 		for(let j = 0; j < 4; j ++) {
 			for(let i = 2; i >= 0; i -- ) {
 				//判断是否能够
@@ -355,7 +355,7 @@ Creat2048.prototype =  {
 						setTimeout(function(){
 							self.createRandomNumCell()
 						}, 210);
-					} 
+					}
 					self.gameover(self.arr)
 					break;
 				case 39:
@@ -380,6 +380,8 @@ Creat2048.prototype =  {
 		//重新开始游戏
 		$(this.button).on("click",function(){
 			self.init();
+			//分数清零
+			$('header span').html(0);
 		})
 	},
 	/*更新分数
